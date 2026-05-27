@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peinture438 | Services de Peinture Professionnels</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <img src="images/logo.png" alt="Peinture438 Logo" class="site-logo">
+        </div>
+        <nav>
+            <a href="#services" id="nav-services">Services</a>
+            <a href="#portfolio" id="nav-portfolio">Réalisations</a>
+            <a href="#contact" id="nav-contact">Contact</a>
+            <button id="lang-btn" class="lang-toggle">EN</button>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1 id="hero-title">Des murs parfaits, un service impeccable.</h1>
+        <p id="hero-desc">Votre peintre de confiance pour tous vos projets résidentiels.</p>
+        <a href="#contact" class="btn" id="hero-btn">Obtenir une soumission</a>
+    </section>
+
+    <section id="services" class="services">
+        <h2 id="services-title">Mon Service</h2>
+        <div class="service-grid">
+            <div class="service-card">
+                <h3 id="service-card-title">Peinture Résidentielle</h3>
+                <p id="service-card-desc">Intérieur et extérieur, préparation minutieuse des surfaces et finition haut de gamme. Un travail propre, soigné et durable, réalisé directement par le propriétaire.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="portfolio">
+        <h2 id="portfolio-title">Notre Travail : Avant / Après</h2>
+        <p id="portfolio-desc">Voyez la transformation Peinture438 de vos propres yeux.</p>
+        
+        <div class="gallery-container">
+            <div class="project-card">
+                <div class="image-box">
+                    <img src="images/avant1.jpg" alt="Projet 1 - Avant">
+                    <span class="label label-before">Avant</span>
+                </div>
+                <div class="image-box">
+                    <img src="images/apres1.jpg" alt="Projet 1 - Après">
+                    <span class="label label-after">Après</span>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="image-box">
+                    <img src="images/avant2.jpg" alt="Projet 2 - Avant">
+                    <span class="label label-before">Avant</span>
+                </div>
+                <div class="image-box">
+                    <img src="images/apres2.jpg" alt="Projet 2 - Après">
+                    <span class="label label-after">Après</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2 id="contact-title">Contactez-moi</h2>
+        <p id="contact-desc">Prêt à transformer votre espace ? Demandez une estimation gratuite dès maintenant.</p>
+        <form>
+            <input type="text" placeholder="Votre Nom" id="form-name" required>
+            <input type="email" placeholder="Votre Courriel" id="form-email" required>
+            <textarea placeholder="Parlez-nous de votre projet (pièces, dimensions, etc.)..." id="form-msg" required></textarea>
+            <button type="submit" class="btn" id="form-btn">Envoyer</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Peinture438. <span id="footer-text">Tous droits réservés.</span></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
