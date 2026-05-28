@@ -22,6 +22,7 @@ const translations = {
         formBtn: "Envoyer",
         formSubject: "Nouvelle soumission - Peinture438",
         footerText: "Tous droits réservés.",
+        portfolioBtn: "Voir toutes nos réalisations →",
         successMsg: "✅ Message envoyé ! Je vous répondrai dans les plus brefs délais.",
         errorMsg: "❌ Une erreur s'est produite. Veuillez réessayer ou me contacter directement.",
         sendingMsg: "Envoi en cours..."
@@ -47,6 +48,7 @@ const translations = {
         formMsg: "Tell us about your project (rooms, dimensions, etc.)...",
         formBtn: "Send",
         formSubject: "New submission - Peinture438",
+        portfolioBtn: "See all our work →",
         footerText: "All rights reserved.",
         successMsg: "✅ Message sent! I'll get back to you as soon as possible.",
         errorMsg: "❌ Something went wrong. Please try again or contact me directly.",
@@ -96,6 +98,8 @@ function applyTranslations() {
     document.getElementById('form-subject').value = t.formSubject;
 
     document.getElementById('footer-text').textContent = t.footerText;
+    const portfolioBtn = document.getElementById('portfolio-btn');
+    if (portfolioBtn) portfolioBtn.textContent = t.portfolioBtn;
 }
 
 // ── Web3Forms Submission ──────────────────────────────────────────────────────
@@ -146,4 +150,21 @@ contactForm.addEventListener('submit', async (e) => {
         formBtn.textContent = translations[currentLang].formBtn;
         formBtn.disabled = false;
     }
+});
+
+// ── Hamburger Menu ────────────────────────────────────────────────────────────
+const hamburgerBtn = document.getElementById('hamburger-btn');
+const mainNav      = document.getElementById('main-nav');
+
+hamburgerBtn.addEventListener('click', () => {
+    hamburgerBtn.classList.toggle('open');
+    mainNav.classList.toggle('open');
+});
+
+// Close menu when a nav link is tapped (smooth UX on mobile)
+document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+        hamburgerBtn.classList.remove('open');
+        mainNav.classList.remove('open');
+    });
 });

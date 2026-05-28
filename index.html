@@ -12,10 +12,15 @@
         <div class="logo-container">
             <img src="images/logo.png" alt="Peinture438 Logo" class="site-logo">
         </div>
-        <nav>
-            <a href="#services" id="nav-services">Services</a>
-            <a href="#portfolio" id="nav-portfolio">Réalisations</a>
-            <a href="#contact" id="nav-contact">Contact</a>
+        <button class="hamburger" id="hamburger-btn" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav id="main-nav">
+            <a href="#services" id="nav-services" class="nav-link">Services</a>
+            <a href="#portfolio" id="nav-portfolio" class="nav-link">Réalisations</a>
+            <a href="#contact" id="nav-contact" class="nav-link">Contact</a>
             <button id="lang-btn" class="lang-toggle">EN</button>
         </nav>
     </header>
@@ -51,7 +56,6 @@
                     <span class="label label-after">Après</span>
                 </div>
             </div>
-            
             <div class="project-card">
                 <div class="image-box">
                     <img src="images/avant2.jpg" alt="Projet 2 - Avant">
@@ -63,6 +67,11 @@
                 </div>
             </div>
         </div>
+
+        <!-- Bouton vers la page portfolio complète -->
+        <div class="portfolio-btn-container">
+            <a href="portfolio.html" class="btn" id="portfolio-btn">Voir toutes nos réalisations →</a>
+        </div>
     </section>
 
     <section id="contact" class="contact">
@@ -70,11 +79,8 @@
         <p id="contact-desc">Prêt à transformer votre espace ? Demandez une estimation gratuite dès maintenant.</p>
         
         <form id="contact-form">
-            <!-- Web3Forms Access Key -->
             <input type="hidden" name="access_key" value="e5fa0726-6a94-49e9-a253-270ec5126f7e">
-            <!-- Optional: custom subject line in the email you receive -->
             <input type="hidden" name="subject" id="form-subject" value="Nouvelle soumission - Peinture438">
-            <!-- Optional: redirects to a thank-you page (leave blank to handle in JS) -->
             <input type="hidden" name="redirect" value="false">
 
             <input type="text" name="name" placeholder="Votre Nom" id="form-name" required>
@@ -82,7 +88,6 @@
             <textarea name="message" placeholder="Parlez-nous de votre projet (pièces, dimensions, etc.)..." id="form-msg" required></textarea>
             <button type="submit" class="btn" id="form-btn">Envoyer</button>
 
-            <!-- Success / Error messages -->
             <p id="form-success" style="display:none; color: #2ecc71; font-weight: bold; margin-top: 10px;"></p>
             <p id="form-error" style="display:none; color: #e74c3c; font-weight: bold; margin-top: 10px;"></p>
         </form>
