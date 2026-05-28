@@ -20,7 +20,11 @@ const translations = {
         formEmail: "Votre Courriel",
         formMsg: "Parlez-nous de votre projet (pièces, dimensions, etc.)...",
         formBtn: "Envoyer",
-        footerText: "Tous droits réservés."
+        formSubject: "Nouvelle soumission - Peinture438",
+        footerText: "Tous droits réservés.",
+        successMsg: "✅ Message envoyé ! Je vous répondrai dans les plus brefs délais.",
+        errorMsg: "❌ Une erreur s'est produite. Veuillez réessayer ou me contacter directement.",
+        sendingMsg: "Envoi en cours..."
     },
     en: {
         navServices: "Services",
@@ -42,7 +46,11 @@ const translations = {
         formEmail: "Your Email",
         formMsg: "Tell us about your project (rooms, dimensions, etc.)...",
         formBtn: "Send",
-        footerText: "All rights reserved."
+        formSubject: "New submission - Peinture438",
+        footerText: "All rights reserved.",
+        successMsg: "✅ Message sent! I'll get back to you as soon as possible.",
+        errorMsg: "❌ Something went wrong. Please try again or contact me directly.",
+        sendingMsg: "Sending..."
     }
 };
 
@@ -52,40 +60,90 @@ let currentLang = 'fr';
 const langBtn = document.getElementById('lang-btn');
 
 langBtn.addEventListener('click', () => {
-    // Basculer la langue
     currentLang = currentLang === 'fr' ? 'en' : 'fr';
-    
-    // Mettre à jour le texte du bouton (il affiche la langue opposée disponible)
     langBtn.textContent = currentLang === 'fr' ? 'EN' : 'FR';
-    
-    // Appliquer les traductions à chaque élément
-    document.getElementById('nav-services').textContent = translations[currentLang].navServices;
-    document.getElementById('nav-portfolio').textContent = translations[currentLang].navPortfolio;
-    document.getElementById('nav-contact').textContent = translations[currentLang].navContact;
-    
-    document.getElementById('hero-title').textContent = translations[currentLang].heroTitle;
-    document.getElementById('hero-desc').textContent = translations[currentLang].heroDesc;
-    document.getElementById('hero-btn').textContent = translations[currentLang].heroBtn;
-    
-    document.getElementById('services-title').textContent = translations[currentLang].servicesTitle;
-    document.getElementById('service-card-title').textContent = translations[currentLang].serviceCardTitle;
-    document.getElementById('service-card-desc').textContent = translations[currentLang].serviceCardDesc;
-    
-    document.getElementById('portfolio-title').textContent = translations[currentLang].portfolioTitle;
-    document.getElementById('portfolio-desc').textContent = translations[currentLang].portfolioDesc;
-    
-    // Traduire les étiquettes Avant / Après dans la galerie
-    document.querySelectorAll('.label-before').forEach(el => el.textContent = translations[currentLang].labelBefore);
-    document.querySelectorAll('.label-after').forEach(el => el.textContent = translations[currentLang].labelAfter);
-    
-    document.getElementById('contact-title').textContent = translations[currentLang].contactTitle;
-    document.getElementById('contact-desc').textContent = translations[currentLang].contactDesc;
-    
-    // Traduire les placeholders du formulaire
-    document.getElementById('form-name').placeholder = translations[currentLang].formName;
-    document.getElementById('form-email').placeholder = translations[currentLang].formEmail;
-    document.getElementById('form-msg').placeholder = translations[currentLang].formMsg;
-    document.getElementById('form-btn').textContent = translations[currentLang].formBtn;
-    
-    document.getElementById('footer-text').textContent = translations[currentLang].footerText;
+    applyTranslations();
+});
+
+function applyTranslations() {
+    const t = translations[currentLang];
+
+    document.getElementById('nav-services').textContent = t.navServices;
+    document.getElementById('nav-portfolio').textContent = t.navPortfolio;
+    document.getElementById('nav-contact').textContent = t.navContact;
+
+    document.getElementById('hero-title').textContent = t.heroTitle;
+    document.getElementById('hero-desc').textContent = t.heroDesc;
+    document.getElementById('hero-btn').textContent = t.heroBtn;
+
+    document.getElementById('services-title').textContent = t.servicesTitle;
+    document.getElementById('service-card-title').textContent = t.serviceCardTitle;
+    document.getElementById('service-card-desc').textContent = t.serviceCardDesc;
+
+    document.getElementById('portfolio-title').textContent = t.portfolioTitle;
+    document.getElementById('portfolio-desc').textContent = t.portfolioDesc;
+
+    document.querySelectorAll('.label-before').forEach(el => el.textContent = t.labelBefore);
+    document.querySelectorAll('.label-after').forEach(el => el.textContent = t.labelAfter);
+
+    document.getElementById('contact-title').textContent = t.contactTitle;
+    document.getElementById('contact-desc').textContent = t.contactDesc;
+
+    document.getElementById('form-name').placeholder = t.formName;
+    document.getElementById('form-email').placeholder = t.formEmail;
+    document.getElementById('form-msg').placeholder = t.formMsg;
+    document.getElementById('form-btn').textContent = t.formBtn;
+    document.getElementById('form-subject').value = t.formSubject;
+
+    document.getElementById('footer-text').textContent = t.footerText;
+}
+
+// ── Web3Forms Submission ──────────────────────────────────────────────────────
+const contactForm = document.getElementById('contact-form');
+const formBtn     = document.getElementById('form-btn');
+const successMsg  = document.getElementById('form-success');
+const errorMsg    = document.getElementById('form-error');
+
+contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const t = translations[currentLang];
+
+    // Update button state
+    formBtn.textContent = t.sendingMsg;
+    formBtn.disabled = true;
+    successMsg.style.display = 'none';
+    errorMsg.style.display = 'none';
+
+    const formData = new FormData(contactForm);
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
+
+    try {
+        const response = await fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: json
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+            successMsg.textContent = t.successMsg;
+            successMsg.style.display = 'block';
+            contactForm.reset();
+        } else {
+            throw new Error(result.message || 'Submission failed');
+        }
+    } catch (err) {
+        console.error('Form error:', err);
+        errorMsg.textContent = t.errorMsg;
+        errorMsg.style.display = 'block';
+    } finally {
+        formBtn.textContent = translations[currentLang].formBtn;
+        formBtn.disabled = false;
+    }
 });
