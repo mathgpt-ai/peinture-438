@@ -6,22 +6,9 @@
     <title>Peinture438 | Réalisations</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        .portfolio-page {
-            padding: 60px 10%;
-            text-align: center;
-        }
-
-        .portfolio-page h1 {
-            font-size: 36px;
-            margin-bottom: 10px;
-            color: #1a1a1a;
-        }
-
-        .portfolio-page .subtitle {
-            color: #777;
-            font-size: 16px;
-            margin-bottom: 50px;
-        }
+        .portfolio-page { padding: 80px 8%; }
+        .portfolio-page-header { text-align:center; margin-bottom: 70px; }
+        .portfolio-page-header .section-desc { margin: 0 auto; }
 
         .portfolio-grid {
             display: flex;
@@ -32,46 +19,44 @@
         .portfolio-project {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 16px;
             flex-wrap: wrap;
         }
 
         .portfolio-project .image-box {
             flex: 1;
             min-width: 280px;
-            max-width: 500px;
+            max-width: 520px;
         }
 
         .portfolio-project .image-box img {
-            width: 100%;
-            height: 350px;
+            width: 100%; height: 360px;
             object-fit: cover;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+            border-radius: 6px;
+            display: block;
+            transition: transform 0.4s ease;
         }
+        .portfolio-project .image-box:hover img { transform: scale(1.02); }
+        .portfolio-project .image-box { overflow:hidden; border-radius:6px; }
 
-        .back-btn-container {
-            margin-top: 60px;
-        }
+        .project-divider { border:none; border-top:1px solid var(--border); margin:0; }
 
-        /* ── Divider between projects ── */
-        .project-divider {
-            border: none;
-            border-top: 1px solid #eee;
-            margin: 0;
-        }
+        .back-btn-container { margin-top: 70px; text-align:center; }
     </style>
 </head>
 <body>
+
+    <div class="announcement-bar">
+        <span id="announce-text">Le calendrier se remplit rapidement —</span>
+        <a href="index.html#contact" id="announce-link"> Cliquez ici pour obtenir votre estimation gratuite !</a>
+    </div>
 
     <header>
         <div class="logo-container">
             <img src="images/logo.png" alt="Peinture438 Logo" class="site-logo">
         </div>
         <button class="hamburger" id="hamburger-btn" aria-label="Menu">
-            <span></span>
-            <span></span>
-            <span></span>
+            <span></span><span></span><span></span>
         </button>
         <nav id="main-nav">
             <a href="index.html#services" class="nav-link" id="nav-services">Services</a>
@@ -82,12 +67,15 @@
     </header>
 
     <div class="portfolio-page">
-        <h1 id="page-title">Toutes nos Réalisations</h1>
-        <p class="subtitle" id="page-subtitle">Avant & Après — Chaque projet, une transformation.</p>
+        <div class="portfolio-page-header">
+            <span class="section-label" id="portfolio-label">Nos réalisations</span>
+            <h1 class="section-title" id="page-title">Toutes nos transformations</h1>
+            <p class="section-desc" id="page-subtitle">Avant & Après — Chaque projet, une transformation.</p>
+        </div>
 
         <div class="portfolio-grid">
 
-            <!-- ── Projet 1 ── -->
+            <!-- Projet 1 -->
             <div class="portfolio-project">
                 <div class="image-box">
                     <img src="images/avant1.jpg" alt="Projet 1 - Avant">
@@ -101,7 +89,7 @@
 
             <hr class="project-divider">
 
-            <!-- ── Projet 2 ── -->
+            <!-- Projet 2 -->
             <div class="portfolio-project">
                 <div class="image-box">
                     <img src="images/avant2.jpg" alt="Projet 2 - Avant">
@@ -116,8 +104,6 @@
             <hr class="project-divider">
 
             <!-- ══ AJOUTE TES NOUVEAUX PROJETS ICI ══
-                 Copie le bloc ci-dessous et change les noms d'images.
-
             <div class="portfolio-project">
                 <div class="image-box">
                     <img src="images/avant3.jpg" alt="Projet 3 - Avant">
@@ -128,18 +114,18 @@
                     <span class="label label-after" data-label="after">Après</span>
                 </div>
             </div>
-            ══════════════════════════════════════════ -->
+            ════════════════════════════════════════ -->
 
         </div>
 
-        <!-- Retour à l'accueil -->
         <div class="back-btn-container">
-            <a href="index.html" class="btn" id="back-btn">← Retour à l'accueil</a>
+            <a href="index.html" class="btn-outline" id="back-btn">← Retour à l'accueil</a>
         </div>
     </div>
 
     <footer>
         <p>&copy; 2026 Peinture438. <span id="footer-text">Tous droits réservés.</span></p>
+        <p style="font-size:12px; color:#444;">Laval, Québec</p>
     </footer>
 
     <script src="portfolio.js"></script>
