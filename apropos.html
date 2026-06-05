@@ -254,10 +254,10 @@
             <span></span><span></span><span></span>
         </button>
         <nav id="main-nav">
-            <a href="index.html#services" class="nav-link">Services</a>
-            <a href="portfolio.html" class="nav-link">Réalisations</a>
-            <a href="apropos.html" class="nav-link">À propos</a>
-            <a href="index.html#contact" class="nav-link">Contact</a>
+            <a href="index.html#services" class="nav-link" id="nav-services">Services</a>
+            <a href="portfolio.html" class="nav-link" id="nav-portfolio">Réalisations</a>
+            <a href="apropos.html" class="nav-link" id="nav-about">À propos</a>
+            <a href="index.html#contact" class="nav-link" id="nav-contact">Contact</a>
             <button id="lang-btn" class="lang-toggle">EN</button>
         </nav>
     </header>
@@ -274,10 +274,10 @@
         <div class="story-grid">
 
             <div class="story-sidebar">
-                <img src="images/logo.cercle.png" alt="Peinture438" class="circle-logo">
+                <img src="images/logo-cercle.png" alt="Peinture438" class="circle-logo">
                 <div>
                     <span class="sidebar-label">Laval, Québec</span>
-                    <p>Une entreprise locale,<br>fondée sur des valeurs simples&nbsp;: bien faire le travail du premier coup.</p>
+                    <p id="sidebar-desc">Une entreprise locale,<br>fondée sur des valeurs simples&nbsp;: bien faire le travail du premier coup.</p>
                 </div>
             </div>
 
@@ -345,13 +345,13 @@
                 <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#1c486c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                     <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>
                 </svg>
-                <span>Photo à venir</span>
+                <span data-photo-slot>Photo à venir</span>
             </div>
             <div class="photo-placeholder">
                 <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#1c486c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                     <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>
                 </svg>
-                <span>Photo à venir</span>
+                <span data-photo-slot>Photo à venir</span>
             </div>
         </div>
     </section>
@@ -370,10 +370,14 @@
         const t = {
             fr: {
                 announceLink: " Cliquez ici pour obtenir votre estimation gratuite !",
-                navServices: "Services", navPortfolio: "Réalisations", navContact: "Contact", navAbout: "À propos",
+                navServices: "Services",
+                navPortfolio: "Réalisations",
+                navAbout: "À propos",
+                navContact: "Contact",
                 heroLabel: "Notre histoire",
                 heroTitle: "Né d'une <em>frustration</em>,<br>bâti sur la fierté.",
                 heroDesc: "Peinture438, c'est une équipe qui a décidé de faire les choses autrement — correctement.",
+                sidebarDesc: "Une entreprise locale,<br>fondée sur des valeurs simples&nbsp;: bien faire le travail du premier coup.",
                 ch1num: "01 — Les débuts",
                 ch1title: "On a appris le métier… en voyant comment il ne fallait pas le faire.",
                 ch1p: "Tout a commencé dans des compagnies de peinture étudiantes. La vitesse primait sur tout — on sautait des étapes essentielles, on quittait les chantiers avec des coins mal découpés. Et pourtant, les clients payaient le plein prix.",
@@ -385,10 +389,15 @@
                 ch2p2: "Pas de sous-traitants. Pas de visages inconnus dans votre maison. On ne quitte pas un chantier tant que le résultat n'est pas à la hauteur.",
                 valLabel: "Ce en quoi nous croyons",
                 valTitle: "Trois principes. Aucun compromis.",
-                val1title: "La préparation avant tout", val1desc: "Un bon résultat commence bien avant le premier coup de pinceau. Sabler, peindre, nettoyer — chaque étape faite comme il faut.",
-                val2title: "Zéro sous-traitant", val2desc: "Notre équipe fait le travail. Pas des inconnus envoyés à la dernière minute. Vous savez exactement qui entre chez vous.",
-                val3title: "Fierté du travail bien fait", val3desc: "On ne quitte pas un chantier tant qu'on est pas fiers du résultat. Parce que votre maison le mérite.",
-                photoLabel: "En images", photoTitle: "Bientôt, des photos de l'équipe", photoDesc: "Des photos de notre équipe sur les chantiers seront ajoutées ici prochainement.",
+                val1title: "La préparation avant tout",
+                val1desc: "Un bon résultat commence bien avant le premier coup de pinceau. Sabler, peindre, nettoyer — chaque étape faite comme il faut.",
+                val2title: "Zéro sous-traitant",
+                val2desc: "Notre équipe fait le travail. Pas des inconnus envoyés à la dernière minute. Vous savez exactement qui entre chez vous.",
+                val3title: "Fierté du travail bien fait",
+                val3desc: "On ne quitte pas un chantier tant qu'on est pas fiers du résultat. Parce que votre maison le mérite.",
+                photoLabel: "En images",
+                photoTitle: "Bientôt, des photos de l'équipe",
+                photoDesc: "Des photos de notre équipe sur les chantiers seront ajoutées ici prochainement.",
                 ctaTitle: "Prêt à voir la <em>différence</em>&nbsp;?",
                 ctaBtn: "Obtenir une estimation gratuite",
                 footerText: "Tous droits réservés.",
@@ -396,10 +405,14 @@
             },
             en: {
                 announceLink: " Click here to get your free estimate!",
-                navServices: "Services", navPortfolio: "Portfolio", navContact: "Contact", navAbout: "About",
+                navServices: "Services",
+                navPortfolio: "Portfolio",
+                navAbout: "About",
+                navContact: "Contact",
                 heroLabel: "Our story",
                 heroTitle: "Born from <em>frustration</em>,<br>built on pride.",
                 heroDesc: "Peinture438 is a team that decided to do things differently — the right way.",
+                sidebarDesc: "A local company,<br>built on simple values: doing the job right the first time.",
                 ch1num: "01 — The beginning",
                 ch1title: "We learned the trade… by seeing how it shouldn't be done.",
                 ch1p: "It all started at student painting companies. Speed was everything — essential steps were skipped, and crews left job sites with poorly cut edges. Yet clients paid full price.",
@@ -411,10 +424,15 @@
                 ch2p2: "No subcontractors. No unknown faces in your home. We don't leave a job site until the result meets our standards.",
                 valLabel: "What we believe in",
                 valTitle: "Three principles. No compromise.",
-                val1title: "Preparation first", val1desc: "A great result starts long before the first brushstroke. Sand, paint, clean — every step done right.",
-                val2title: "Zero subcontractors", val2desc: "Our team does the work. No strangers sent at the last minute. You know exactly who enters your home.",
-                val3title: "Pride in the work", val3desc: "We don't leave a job site until we're proud of the result. Because your home deserves it.",
-                photoLabel: "In photos", photoTitle: "Team photos coming soon", photoDesc: "Photos of our team on job sites will be added here soon.",
+                val1title: "Preparation first",
+                val1desc: "A great result starts long before the first brushstroke. Sand, paint, clean — every step done right.",
+                val2title: "Zero subcontractors",
+                val2desc: "Our team does the work. No strangers sent at the last minute. You know exactly who enters your home.",
+                val3title: "Pride in the work",
+                val3desc: "We don't leave a job site until we're proud of the result. Because your home deserves it.",
+                photoLabel: "In photos",
+                photoTitle: "Team photos coming soon",
+                photoDesc: "Photos of our team on job sites will be added here soon.",
                 ctaTitle: "Ready to see the <em>difference</em>?",
                 ctaBtn: "Get a free estimate",
                 footerText: "All rights reserved.",
@@ -430,31 +448,53 @@
 
         function applyLang() {
             const T = t[lang];
+
+            // Nav links
+            setText('nav-services', T.navServices);
+            setText('nav-portfolio', T.navPortfolio);
+            setText('nav-about', T.navAbout);
+            setText('nav-contact', T.navContact);
+
+            // Announcement
             setText('announce-link', T.announceLink);
-            set('hero-label', T.heroLabel);
+
+            // Hero
+            setText('hero-label', T.heroLabel);
             set('hero-title', T.heroTitle);
-            set('hero-desc', T.heroDesc);
-            set('ch1-num', T.ch1num);
-            set('ch1-title', T.ch1title);
-            set('ch1-p', T.ch1p);
-            set('ch1-quote', T.ch1quote);
-            set('ch1-p2', T.ch1p2);
-            set('ch2-num', T.ch2num);
-            set('ch2-title', T.ch2title);
-            set('ch2-p', T.ch2p);
-            set('ch2-p2', T.ch2p2);
-            set('val-label', T.valLabel);
-            set('val-title', T.valTitle);
-            set('val1-title', T.val1title); set('val1-desc', T.val1desc);
-            set('val2-title', T.val2title); set('val2-desc', T.val2desc);
-            set('val3-title', T.val3title); set('val3-desc', T.val3desc);
-            set('photo-label', T.photoLabel);
-            set('photo-title', T.photoTitle);
-            set('photo-desc', T.photoDesc);
+            setText('hero-desc', T.heroDesc);
+
+            // Sidebar
+            set('sidebar-desc', T.sidebarDesc);
+
+            // Story chapters
+            setText('ch1-num', T.ch1num);
+            setText('ch1-title', T.ch1title);
+            setText('ch1-p', T.ch1p);
+            setText('ch1-quote', T.ch1quote);
+            setText('ch1-p2', T.ch1p2);
+            setText('ch2-num', T.ch2num);
+            setText('ch2-title', T.ch2title);
+            setText('ch2-p', T.ch2p);
+            setText('ch2-p2', T.ch2p2);
+
+            // Values
+            setText('val-label', T.valLabel);
+            setText('val-title', T.valTitle);
+            setText('val1-title', T.val1title); setText('val1-desc', T.val1desc);
+            setText('val2-title', T.val2title); setText('val2-desc', T.val2desc);
+            setText('val3-title', T.val3title); setText('val3-desc', T.val3desc);
+
+            // Photos
+            setText('photo-label', T.photoLabel);
+            setText('photo-title', T.photoTitle);
+            setText('photo-desc', T.photoDesc);
+            document.querySelectorAll('[data-photo-slot]').forEach(el => el.textContent = T.photoSlot);
+
+            // CTA & footer
             set('cta-title', T.ctaTitle);
             setText('cta-btn', T.ctaBtn);
             setText('footer-text', T.footerText);
-            document.querySelectorAll('[data-photo-slot]').forEach(el => el.textContent = T.photoSlot);
+
             langBtn.textContent = lang === 'fr' ? 'EN' : 'FR';
         }
 
@@ -463,6 +503,7 @@
             applyLang();
         });
 
+        // Announcement bar close
         const announceBar = document.getElementById('announcement-bar');
         const announceClose = document.getElementById('announce-close');
         if (announceClose && announceBar) {
@@ -472,6 +513,8 @@
                 announceBar.classList.add('hidden');
             });
         }
+
+        // Hamburger
         const hamburgerBtn = document.getElementById('hamburger-btn');
         const mainNav = document.getElementById('main-nav');
         hamburgerBtn.addEventListener('click', () => {
