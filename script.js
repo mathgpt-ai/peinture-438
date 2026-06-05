@@ -1,6 +1,5 @@
 const translations = {
     fr: {
-        announceText: "Le calendrier se remplit rapidement —",
         announceLink: " Cliquez ici pour obtenir votre estimation gratuite !",
         navServices: "Services",
         navPortfolio: "Réalisations",
@@ -43,7 +42,6 @@ const translations = {
         sendingMsg: "Envoi en cours..."
     },
     en: {
-        announceText: "Calendar filling up fast —",
         announceLink: " Click here to get your free estimate!",
         navServices: "Services",
         navPortfolio: "Portfolio",
@@ -95,7 +93,6 @@ function applyTranslations() {
     const set = (id, val) => { const el = document.getElementById(id); if(el) el.textContent = val; };
     const setPlaceholder = (id, val) => { const el = document.getElementById(id); if(el) el.placeholder = val; };
 
-    set('announce-text', t.announceText);
     set('announce-link', t.announceLink);
     set('nav-services', t.navServices);
     set('nav-portfolio', t.navPortfolio);
@@ -141,6 +138,17 @@ langBtn.addEventListener('click', () => {
     currentLang = currentLang === 'fr' ? 'en' : 'fr';
     applyTranslations();
 });
+
+// ── Dismissible Announcement Bar ─────────────────────
+const announceBar = document.getElementById('announcement-bar');
+const announceClose = document.getElementById('announce-close');
+if (announceClose && announceBar) {
+    announceClose.addEventListener('click', () => {
+        announceBar.style.maxHeight = announceBar.offsetHeight + 'px';
+        announceBar.offsetHeight; // force reflow
+        announceBar.classList.add('hidden');
+    });
+}
 
 // ── Hamburger ────────────────────────────────────────────
 const hamburgerBtn = document.getElementById('hamburger-btn');

@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════════════
-   PEINTURE438 — Design inspiré de Duoco
-   Palette: blanc cassé, noir profond, rouge accent
+   PEINTURE438
+   Palette: blanc cassé, bleu profond, orange accent
    Typo: Playfair Display (titres) + DM Sans (corps)
 ═══════════════════════════════════════════════════════ */
 
@@ -28,15 +28,24 @@ body {
     line-height: 1.6;
 }
 
-/* ── Announcement Bar ──────────────────────────────── */
 .announcement-bar {
     background: #1c486c;
     color: var(--white);
     text-align: center;
-    padding: 10px 20px;
+    padding: 10px 48px 10px 20px;
     font-size: 13px;
     font-weight: 500;
     letter-spacing: 0.3px;
+    position: relative;
+    transition: max-height 0.35s ease, padding 0.35s ease, opacity 0.3s ease;
+    overflow: hidden;
+}
+
+.announcement-bar.hidden {
+    max-height: 0 !important;
+    padding-top: 0;
+    padding-bottom: 0;
+    opacity: 0;
 }
 
 .announcement-bar a {
@@ -45,13 +54,32 @@ body {
     text-underline-offset: 3px;
 }
 
-/* ── Header ─────────────────────────────────────────── */
+.announce-close {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    color: rgba(255,255,255,0.75);
+    font-size: 14px;
+    cursor: pointer;
+    padding: 4px 6px;
+    line-height: 1;
+    border-radius: 3px;
+    transition: color 0.2s, background 0.2s;
+}
+.announce-close:hover {
+    color: white;
+    background: rgba(255,255,255,0.15);
+}
+
 header {
     background: var(--white);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 14px 6%;
+    padding: 10px 6%;
     border-bottom: 1px solid var(--border);
     position: sticky;
     top: 0;
@@ -60,7 +88,7 @@ header {
 
 .logo-container { display:flex; align-items:center; }
 
-.site-logo { height: 52px; width:auto; object-fit:contain; }
+.site-logo { height: 72px; width:auto; object-fit:contain; }
 
 nav { display:flex; align-items:center; gap: 6px; }
 
@@ -91,7 +119,6 @@ nav a:hover { background: #e8f2f9; color: var(--black); }
 }
 .lang-toggle:hover { background: #1c486c; color: var(--white); }
 
-/* ── Hamburger ──────────────────────────────────────── */
 .hamburger {
     display: none;
     flex-direction: column;
@@ -114,11 +141,11 @@ nav a:hover { background: #e8f2f9; color: var(--black); }
 .hamburger.open span:nth-child(3) { transform: translateY(-7.75px) rotate(-45deg); }
 
 @media (max-width: 768px) {
-    header { padding: 14px 5%; }
+    header { padding: 10px 5%; }
     .hamburger { display: flex; }
     nav {
         display: none; flex-direction: column; align-items: flex-start;
-        position: absolute; top: 81px; left:0; width:100%;
+        position: absolute; top: 93px; left:0; width:100%;
         background: var(--white);
         border-bottom: 1px solid var(--border);
         padding: 10px 0;
@@ -129,7 +156,6 @@ nav a:hover { background: #e8f2f9; color: var(--black); }
     .lang-toggle { margin: 12px 6%; }
 }
 
-/* ── Hero ───────────────────────────────────────────── */
 .hero {
     position: relative;
     display: grid;
@@ -197,7 +223,6 @@ nav a:hover { background: #e8f2f9; color: var(--black); }
     .hero-image::after { background: linear-gradient(to bottom, var(--offwhite) 0%, transparent 30%); }
 }
 
-/* ── Buttons ────────────────────────────────────────── */
 .btn {
     display: inline-block;
     background: var(--red);
@@ -231,7 +256,6 @@ nav a:hover { background: #e8f2f9; color: var(--black); }
 }
 .btn-outline:hover { background: #1c486c; color: var(--white); }
 
-/* ── Section Titles ─────────────────────────────────── */
 .section-label {
     font-size: 11px;
     font-weight: 600;
@@ -258,7 +282,6 @@ nav a:hover { background: #e8f2f9; color: var(--black); }
     line-height: 1.7;
 }
 
-/* ── Services ───────────────────────────────────────── */
 .services {
     padding: 100px 8%;
     background: var(--white);
@@ -306,7 +329,6 @@ nav a:hover { background: #e8f2f9; color: var(--black); }
     font-weight: 300;
 }
 
-/* ── Why Us (checklist) ─────────────────────────────── */
 .why-us {
     padding: 100px 8%;
     background: #1c486c;
@@ -362,7 +384,6 @@ nav a:hover { background: #e8f2f9; color: var(--black); }
     .why-image { aspect-ratio: 16/9; }
 }
 
-/* ── Portfolio ───────────────────────────────────────── */
 .portfolio {
     padding: 100px 8%;
     background: #e8f2f9;
@@ -422,7 +443,6 @@ nav a:hover { background: #e8f2f9; color: var(--black); }
 
 .portfolio-btn-container { margin-top: 56px; }
 
-/* ── Contact ────────────────────────────────────────── */
 .contact {
     padding: 100px 8%;
     background: var(--white);
@@ -485,10 +505,9 @@ form textarea { height: 130px; resize: vertical; }
     .contact { grid-template-columns:1fr; gap:50px; }
 }
 
-/* ── Footer ─────────────────────────────────────────── */
 footer {
     background: #1c486c;
-    color: #666;
+    color: #aac4d8;
     padding: 36px 8%;
     display: flex;
     justify-content: space-between;
@@ -498,7 +517,7 @@ footer {
     gap: 10px;
 }
 
-footer a { color: #888; text-decoration:none; transition: color 0.2s; }
+footer a { color: #aac4d8; text-decoration:none; transition: color 0.2s; }
 footer a:hover { color: var(--white); }
 
 @media (max-width: 600px) {
